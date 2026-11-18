@@ -2,11 +2,11 @@
   "profile": {
     "name": "MANI NESRINE",
     "title": "Software Developer / AI automation / machine larning /computer vision",
-    "bio": "I am a software developer specializing in AI, computer vision, and business automation. I train and deploy deep learning models using tools such as EfficientNet, XGBoost, YOLO, and SAM2, and I make their predictions understandable with techniques like Grad-CAM heatmaps. On the application side, I build full-stack products with FastAPI and React, automate workflows with n8n, and package everything with Docker so it runs anywhere with a single command. I care about making AI practical: clear results, simple interfaces, and systems that are easy to set up and maintain..",
+    "bio": "I am a software developer specializing in AI, computer vision. I train and deploy deep learning models using tools such as EfficientNet, XGBoost, YOLO, and SAM2, and I make their predictions understandable with techniques like Grad-CAM heatmaps. , I build full-stack products with FastAPI and React, automate workflows with n8n, and package everything with Docker ",
     "links": [
       { "label": "GitHub", "url": "https://github.com/nesrinenounou" },
-      { "label": "LinkedIn", "url": "https://linkedin.com/in/your-username" },
-      { "label": "Email", "url": "mailto:nes204776@gmail.com" }
+      { "label": "LinkedIn", "url": "https://www.linkedin.com/in/nesrine-m-8404062bb/" },
+      { "label": "Email : nes204776@gmail.com", "url": "mailto:nes204776@gmail.com" }
     ]
   },
   "projects": [
