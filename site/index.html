@@ -5,9 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;800&display=swap" rel="stylesheet">
 <script>
-  // Apply saved theme before paint (no flash)
   try {
     const t = localStorage.getItem("theme") ||
       (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
@@ -15,70 +14,120 @@
   } catch (e) {}
 </script>
 <style>
-:root{--bg:#f2f5f9;--surface:#ffffff;--ink:#141a24;--muted:#5b6678;--line:#dbe1ea;--accent:#2450e6;--accent-ink:#fff}
-[data-theme="dark"]{--bg:#111827;--surface:#18212f;--ink:#e8edf6;--muted:#9aa6bb;--line:#2a3649;--accent:#8fabff;--accent-ink:#0f1730}
+:root{--bg:#f5f7fa;--surface:#fff;--ink:#0f172a;--muted:#526077;--line:#d9e0ea;--accent:#0b6e99;--accent-ink:#fff}
+[data-theme="dark"]{--bg:#0b1220;--surface:#121b2d;--ink:#e7edf7;--muted:#9aa8bf;--line:#243148;--accent:#6cc4e8;--accent-ink:#06202c}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6;transition:background .25s,color .25s}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65;transition:background .25s,color .25s}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-.layout{display:grid;grid-template-columns:320px 1fr;gap:64px;max-width:1180px;margin:0 auto;padding:0 32px}
-aside{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding:64px 0}
-h1{font-size:2.6rem;line-height:1.05;margin:0 0 8px;font-weight:700;letter-spacing:-.02em}
-.role{color:var(--accent);font-weight:500;margin:0 0 20px}
-.bio{color:var(--muted);max-width:34ch;margin:0 0 28px}
-.links{display:flex;flex-direction:column;gap:6px;padding:0;margin:0;list-style:none}
-.links a{text-decoration:none;border-bottom:1px solid var(--line);display:inline-block;padding:2px 0}
-.links a:hover{border-color:var(--accent)}
-.theme{position:fixed;top:16px;right:16px;z-index:20;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font:inherit;cursor:pointer}.theme:hover{border-color:var(--accent)}
-main{padding:64px 0}
-.project{padding:0 0 72px;margin:0 0 72px;border-bottom:1px solid var(--line)}
-.project:last-child{border:0}
-.viewer{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;aspect-ratio:16/10}
-.viewer img,.viewer video,.viewer iframe{width:100%;height:100%;object-fit:contain;border:0;display:block;background:#000}
-.viewer img{background:var(--surface)}
-.thumbs{display:flex;gap:8px;margin:10px 0 0;flex-wrap:wrap}
-.thumbs button{width:84px;height:54px;padding:0;border:2px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface);cursor:pointer;position:relative}
-.thumbs button[aria-pressed="true"]{border-color:var(--accent)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{font-weight:800;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+nav{display:flex;align-items:center;gap:22px}
+nav a{text-decoration:none;color:var(--muted);font-weight:500}
+nav a:hover{color:var(--ink)}
+.theme{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:7px 16px;font:inherit;font-weight:500;cursor:pointer;white-space:nowrap}
+.theme:hover{border-color:var(--accent)}
+
+.hero{padding:96px 0 72px}
+.frame{position:relative;padding:36px 0 36px 40px;max-width:820px}
+.frame::before,.frame::after{content:"";position:absolute;width:28px;height:28px;border:3px solid var(--accent)}
+.frame::before{top:0;left:0;border-right:0;border-bottom:0}
+.frame::after{bottom:0;right:0;border-left:0;border-top:0}
+h1{font-size:clamp(2.4rem,6.5vw,4.6rem);line-height:1.02;letter-spacing:-.035em;font-weight:800;margin:0 0 14px}
+.role{font-size:clamp(1.05rem,2.2vw,1.35rem);color:var(--accent);font-weight:600;margin:0 0 22px}
+.bio{color:var(--muted);font-size:1.08rem;max-width:62ch;margin:0 0 30px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;text-decoration:none;padding:11px 20px;border-radius:10px;font-weight:600;border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+
+section{padding:56px 0}
+h2.sec{font-size:1.9rem;letter-spacing:-.02em;margin:0 0 28px;font-weight:800}
+.skills{display:flex;flex-wrap:wrap;gap:10px;padding:0;margin:0;list-style:none}
+.skills li,.tags li{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:4px 12px;font-size:.92rem;font-weight:500}
+
+.project{display:grid;grid-template-columns:1.25fr 1fr;gap:44px;align-items:start;padding:44px 0;border-top:1px solid var(--line)}
+.project:first-child{border-top:0;padding-top:0}
+.media{min-width:0}
+.viewer{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;aspect-ratio:16/10}
+.viewer img,.viewer video,.viewer iframe{width:100%;height:100%;object-fit:contain;border:0;display:block;background:var(--surface)}
+.viewer video,.viewer iframe{background:#000}
+.viewer .missing{padding:18px;color:var(--muted)}
+.thumbs{display:flex;gap:8px;margin:12px 0 0;flex-wrap:wrap}
+.thumbs button{width:72px;height:48px;padding:0;border:2px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface);cursor:pointer;opacity:.75}
+.thumbs button[aria-pressed="true"]{border-color:var(--accent);opacity:1}
 .thumbs img{width:100%;height:100%;object-fit:cover;display:block}
-.thumbs .vid{display:grid;place-items:center;height:100%;font-size:.8rem;color:var(--ink)}
-h2{font-size:1.9rem;margin:28px 0 8px;letter-spacing:-.01em}
-.desc{color:var(--muted);max-width:62ch;margin:0 0 16px}
-.tags{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0 0 20px;list-style:none}
-.tags li{font-size:.85rem;border:1px solid var(--line);border-radius:6px;padding:2px 10px;background:var(--surface)}
-.btns{display:flex;gap:12px;flex-wrap:wrap}
-.btn{text-decoration:none;padding:10px 18px;border-radius:8px;font-weight:500;border:1px solid var(--accent)}
-.btn.primary{background:var(--accent);color:var(--accent-ink)}
-.btn.ghost{color:var(--ink);border-color:var(--line)}
-.btn.ghost:hover{border-color:var(--accent)}
+.thumbs .vid{display:grid;place-items:center;height:100%;font-size:.78rem;font-weight:600}
+.info h3{font-size:1.65rem;line-height:1.2;letter-spacing:-.02em;margin:0 0 12px;font-weight:800}
+.desc{color:var(--muted);margin:0 0 18px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0 0 22px;list-style:none}
+.tags li{font-size:.84rem;padding:2px 10px}
+
+footer{border-top:1px solid var(--line);padding:36px 0 48px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px 28px;justify-content:space-between}
+footer .links{display:flex;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;font-weight:500}
+footer a:hover{color:var(--accent)}
+
 @media(max-width:860px){
-  .layout{grid-template-columns:1fr;gap:0;padding:0 20px}
-aside{position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;justify-content:space-between;padding:64px 0}  main{padding:32px 0}
-  h1{font-size:2.1rem}
+  .wrap{padding:0 20px}
+  nav a{display:none}
+  .hero{padding:48px 0 36px}
+  .frame{padding:28px 0 28px 24px}
+  .project{grid-template-columns:1fr;gap:20px;padding:32px 0}
+  section{padding:36px 0}
+  .info h3{font-size:1.45rem}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
-<body >
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" id="brand" href="#top"></a>
+    <nav>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <button class="theme" id="theme" type="button"></button>
+    </nav>
+  </div>
+</header>
 
-<div class="layout">
-
-  <aside>
-    <div>
-      <h1 id="name"></h1>
-      <p class="role" id="role"></p>
-      <p class="bio" id="bio"></p>
-      <ul class="links" id="links"></ul>
-
+<main id="top">
+  <div class="wrap">
+    <div class="hero">
+      <div class="frame">
+        <h1 id="name"></h1>
+        <p class="role" id="role"></p>
+        <p class="bio" id="bio"></p>
+        <div class="cta" id="cta"></div>
+      </div>
     </div>
-    <button class="theme" id="theme" type="button"></button>
 
-  </aside>
-  <main id="projects" aria-label="Projects"></main>
-</div>
+    <section id="skills" hidden>
+      <h2 class="sec">Skills</h2>
+      <ul class="skills" id="skillList"></ul>
+    </section>
+
+    <section id="projects">
+      <h2 class="sec">Projects</h2>
+      <div id="projectList"></div>
+    </section>
+  </div>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <span id="copy"></span>
+    <div class="links" id="flinks"></div>
+  </div>
+</footer>
 
 <script>
-
 const $ = (s) => document.querySelector(s);
 const el = (tag, props = {}, ...kids) => {
   const n = Object.assign(document.createElement(tag), props);
@@ -86,12 +135,11 @@ const el = (tag, props = {}, ...kids) => {
   return n;
 };
 
-// ---- Theme toggle ----
+// Theme
 const themeBtn = $("#theme");
-function paintTheme() {
-  const dark = document.documentElement.dataset.theme === "dark";
-  themeBtn.textContent = dark ? "Light mode" : "Dark mode";
-}
+const paintTheme = () => {
+  themeBtn.textContent = document.documentElement.dataset.theme === "dark" ? "Light mode" : "Dark mode";
+};
 themeBtn.addEventListener("click", () => {
   const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
   document.documentElement.dataset.theme = next;
@@ -100,7 +148,7 @@ themeBtn.addEventListener("click", () => {
 });
 paintTheme();
 
-// ---- Media helpers ----
+// Media
 function youtubeEmbed(url) {
   const m = url.match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/);
   return m ? `https://www.youtube-nocookie.com/embed/${m[1]}` : null;
@@ -108,19 +156,22 @@ function youtubeEmbed(url) {
 function showMedia(viewer, item) {
   viewer.replaceChildren();
   if (item.type === "image") {
-    viewer.append(el("img", { src: item.src, alt: item.alt, loading: "lazy" }));
+    viewer.append(el("img", {
+      src: encodeURI(item.src), alt: item.alt, loading: "lazy",
+      onerror: () => viewer.replaceChildren(el("p", { className: "missing" }, "Image not found: " + item.src))
+    }));
   } else {
     const yt = youtubeEmbed(item.src);
     viewer.append(yt
       ? el("iframe", { src: yt, title: item.alt, allowfullscreen: true })
-      : el("video", { src: item.src, controls: true, preload: "metadata" }));
+      : el("video", { src: encodeURI(item.src), controls: true, preload: "metadata" }));
   }
 }
 
-// ---- Render ----
 function renderProject(p) {
   const media = [];
-  if (p.video) media.push({ type: "video", src: p.video, alt: p.title + " video" });
+  const v = Array.isArray(p.video) ? p.video[0] : p.video;
+  if (v) media.push({ type: "video", src: v, alt: p.title + " video" });
   (p.images || []).forEach((src, i) => media.push({ type: "image", src, alt: `${p.title} screenshot ${i + 1}` }));
 
   const viewer = el("div", { className: "viewer" });
@@ -128,7 +179,7 @@ function renderProject(p) {
   media.forEach((m, i) => {
     const b = el("button", { type: "button", ariaLabel: m.alt });
     b.setAttribute("aria-pressed", i === 0 ? "true" : "false");
-    b.append(m.type === "image" ? el("img", { src: m.src, alt: "" }) : el("span", { className: "vid" }, "Video"));
+    b.append(m.type === "image" ? el("img", { src: encodeURI(m.src), alt: "" }) : el("span", { className: "vid" }, "Video"));
     b.addEventListener("click", () => {
       thumbs.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", "false"));
       b.setAttribute("aria-pressed", "true");
@@ -138,17 +189,17 @@ function renderProject(p) {
   });
   if (media.length) showMedia(viewer, media[0]);
 
-  const btns = el("div", { className: "btns" });
+  const btns = el("div", { className: "cta" });
   if (p.github) btns.append(el("a", { className: "btn primary", href: p.github, target: "_blank", rel: "noopener" }, "View code on GitHub"));
-  if (p.demo) btns.append(el("a", { className: "btn ghost", href: p.demo, target: "_blank", rel: "noopener" }, "Live demo"));
+  if (p.demo) btns.append(el("a", { className: "btn", href: p.demo, target: "_blank", rel: "noopener" }, "Live demo"));
 
   return el("article", { className: "project" },
-    media.length ? viewer : "",
-    media.length > 1 ? thumbs : "",
-    el("h2", {}, p.title),
-    el("p", { className: "desc" }, p.description),
-    el("ul", { className: "tags" }, ...(p.tags || []).map(t => el("li", {}, t))),
-    btns
+    el("div", { className: "media" }, media.length ? viewer : "", media.length > 1 ? thumbs : ""),
+    el("div", { className: "info" },
+      el("h3", {}, p.title),
+      el("p", { className: "desc" }, p.description),
+      el("ul", { className: "tags" }, ...(p.tags || []).map(t => el("li", {}, t))),
+      btns)
   );
 }
 
@@ -156,15 +207,27 @@ fetch("projects.json")
   .then(r => r.json())
   .then(({ profile, projects }) => {
     document.title = `${profile.name} – ${profile.title}`;
+    $("#brand").textContent = profile.name;
     $("#name").textContent = profile.name;
     $("#role").textContent = profile.title;
     $("#bio").textContent = profile.bio;
-    $("#links").append(...profile.links.map(l =>
-      el("li", {}, el("a", { href: l.url, target: "_blank", rel: "noopener" }, l.label))));
-    $("#projects").append(...projects.map(renderProject));
+
+    $("#cta").append(el("a", { className: "btn primary", href: "#projects" }, "View projects"));
+    (profile.links || []).slice(0, 2).forEach(l =>
+      $("#cta").append(el("a", { className: "btn", href: l.url, target: "_blank", rel: "noopener" }, l.label)));
+
+    if (profile.skills && profile.skills.length) {
+      $("#skills").hidden = false;
+      $("#skillList").append(...profile.skills.map(s => el("li", {}, s)));
+    }
+    $("#projectList").append(...projects.map(renderProject));
+
+    $("#flinks").append(...(profile.links || []).map(l =>
+      el("a", { href: l.url, target: "_blank", rel: "noopener" }, l.label)));
+    $("#copy").textContent = `© ${new Date().getFullYear()} ${profile.name}`;
   })
-  .catch(() => {
-    $("#projects").append(el("p", {}, "Could not load projects.json. Run the site with Docker (see README)."));
+  .catch((err) => {
+    $("#projectList").append(el("p", {}, "Error: " + err.message));
   });
 </script>
 </body>
