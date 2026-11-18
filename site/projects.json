@@ -1,0 +1,108 @@
+{
+  "profile": {
+    "name": "MANI NESRINE",
+    "title": "Software Developer / AI automation / machine larning /computer vision",
+    "bio": "I am a software developer specializing in AI, computer vision, and business automation. I train and deploy deep learning models using tools such as EfficientNet, XGBoost, YOLO, and SAM2, and I make their predictions understandable with techniques like Grad-CAM heatmaps. On the application side, I build full-stack products with FastAPI and React, automate workflows with n8n, and package everything with Docker so it runs anywhere with a single command. I care about making AI practical: clear results, simple interfaces, and systems that are easy to set up and maintain..",
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/nesrinenounou" },
+      { "label": "LinkedIn", "url": "https://linkedin.com/in/your-username" },
+      { "label": "Email", "url": "mailto:nes204776@gmail.com" }
+    ]
+  },
+  "projects": [
+   {
+  "title": "Steel-Defect-Detection-App",
+  "description": "Steel factories need to spot flaws in metal sheets before they reach customers, and checking by eye is slow and easy to get wrong. This app does it automatically. You upload a photo of a steel surface, and within seconds it tells you what kind of flaw it sees, such as scratches or small pits, and how sure it is. It also paints the photo with colors to show exactly where it found the problem, so you can see why it reached that answer. If it is not confident, it says so instead of guessing..",
+  "tags": ["Python", "Docker", "PostgreSQL","machine learning" ,"computer vision +yolo + slam"],
+  "images": [
+    "media/image/Steel-Defect-Detection-App/image 1.png",
+    "media/image/Steel-Defect-Detection-App/image 2.png",
+    "media/image/Steel-Defect-Detection-App/image 3.png",
+    "media/image/Steel-Defect-Detection-App/image 4.png",
+    "media/image/Steel-Defect-Detection-App/image 5.png",
+    "media/image/Steel-Defect-Detection-App/image 6.png",
+    "media/image/Steel-Defect-Detection-App/image 7.png",
+    "media/image/Steel-Defect-Detection-App/image 8.png"
+  ],
+  "github": "https://github.com/nesrinenounou/Steel-Defect-Detection-App",
+  "demo": ""
+ },
+    {
+      "title": "Project BizDash",
+      "description": "BizDash is a simple ERP for small businesses with two roles: admins, who control everything, and agents, who see only what they need. It centralizes business data, automates repetitive tasks, and offers optional AI help, all behind a secure login and launched with a single command.",
+      "tags": ["python", "React","fastapi"],
+      "images": [
+        "media/image/BizDash/image 1.png",
+    "media/image/BizDash/image 2.png",
+    "media/image/BizDash/image 3.png",
+    "media/image/BizDash/image 4.png",
+    "media/image/BizDash/image 5.png",
+    "media/image/BizDash/image 6.png",
+    "media/image/BizDash/image 7.png",
+    "media/image/BizDash/image 8.png",
+      "media/image/BizDash/image 9.png",
+    "media/image/BizDash/image10.png",
+    "media/image/BizDash/image 11.png",
+    "media/image/BizDash/image 12.png",
+    "media/image/BizDash/image 13.png",
+    "media/image/BizDash/image 14.png"
+
+
+      ],
+
+      "github": "https://github.com/nesrinenounou/bizdash-business-automation-ai",
+      "demo": ""
+    },
+    {
+      "title": "Project single-camera-2D-perception-pipeline",
+      "description": "A computer vision pipeline that turns the video from a single camera into useful information about what is happening in the scene. It detects the objects in each frame, follows them from one frame to the next, and marks their positions on the image, all without needing special depth sensors or multiple cameras.",
+      "tags": ["python", "React","fastapi","computer vision ","machine learning"],
+      "images": [
+        "media/image/single-camera-2D-perception-pipeline/image 1.png",
+    "media/image/single-camera-2D-perception-pipeline/image 2.png",
+    "media/image/single-camera-2D-perception-pipeline/image 3.png"
+      ],
+      "video": "media/video/video cv.mp4",
+
+      "github": "https://github.com/nesrinenounou/single-camera-2D-perception-pipeline",
+      "demo": ""
+    },
+
+    {
+      "title": "Project country-api-integration",
+      "description": "A web app that lets you pick any country and instantly see its key facts, such as its capital, population, languages, currency, and region. The information is pulled live from a public countries API, so it is always up to date, and it is presented in a clean, easy-to-read page..",
+      "tags": ["api key"],
+      "images": [
+        "media/image/Project country-api-integration/image 1.png",
+    "media/image/Project country-api-integration/image 2.png",
+    "media/image/Project country-api-integration/image 3.png",
+            "media/image/Project country-api-integration/image 4.png"
+      ],
+
+      "github": "https://github.com/nesrinenounou/country-api-integration",
+      "demo": ""
+    },
+    {
+      "title": "Project n8n-email-to-telegram",
+      "description": "An automation that forwards your important emails to Telegram, so you see them instantly on your phone without opening your inbox. Built with n8n, it watches for new emails, picks out the ones that matter, and sends a short message with the sender, subject, and a preview straight to a Telegram chat.",
+      "images": [
+        "media/image/n8n-email-to-telegram/image 1.jpg",
+    "media/image/n8n-email-to-telegram/image 2.jpg",
+    "media/image/n8n-email-to-telegram/image 3.jpg",
+            "media/image/n8n-email-to-telegram/image 4.jpg",
+        "media/image/n8n-email-to-telegram/image 5.jpg",
+        "media/image/n8n-email-to-telegram/image 6.jpg"
+      ],
+
+      "github": "https://github.com/nesrinenounou/n8n-email-to-telegram",
+      "demo": ""
+    }
+
+
+
+
+
+
+
+  ]
+}

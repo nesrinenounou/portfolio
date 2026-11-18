@@ -1,0 +1,8 @@
+services:
+  portfolio:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      # Live edit: any change in ./site shows after browser refresh
+      - ./site:/usr/share/nginx/html:ro

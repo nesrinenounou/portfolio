@@ -1,0 +1,33 @@
+{
+  "profile": {
+    "name": "mani nesrine",
+    "title": "Software Developer /ai computer vision/ ai automation ",
+    "bio": "Ktib hna nabdha qasira 3lik w 3la ach tkhdem (2-3 jumal).",
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/nesrinenounou" },
+      { "label": "LinkedIn", "url": "https://www.linkedin.com/in/nesrine-m-8404062bb?utm_source=share_via&utm_content=profile&utm_medium=member_android" },
+      { "label": "Email: nes204776@gmail.com", }
+    ]
+  },
+  "projects": [
+    {
+      "title": "Steel-Defect-Detection-App",
+      "description": "Sharh machru3: ach yakhdem, ach mochkil yahlou, w ach technologies sta3malt.",
+      "tags": ["Python", "Docker", "PostgreSQL"],
+      "images": ["media/image/Steel-Defect-Detection-App/image 1","media/image/Steel-Defect-Detection-App/image 2",
+      "media/image/Steel-Defect-Detection-App/image 3","media/image/Steel-Defect-Detection-App/image 4"],
+      "video": "",
+      "github": "https://github.com/your-username/project-one",
+      "demo": ""
+    },
+    {
+      "title": "Project two",
+      "description": "Video yumkin ykoun fichier mp4 fi assets/ (mithl assets/demo.mp4) aw rabit YouTube.",
+      "tags": ["JavaScript", "React"],
+      "images": ["assets/placeholder.svg"],
+      "video": "",
+      "github": "https://github.com/your-username/project-two",
+      "demo": ""
+    }
+  ]
+}

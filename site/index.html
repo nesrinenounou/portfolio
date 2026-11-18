@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;700&display=swap" rel="stylesheet">
+<script>
+  // Apply saved theme before paint (no flash)
+  try {
+    const t = localStorage.getItem("theme") ||
+      (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.dataset.theme = t;
+  } catch (e) {}
+</script>
+<style>
+:root{--bg:#f2f5f9;--surface:#ffffff;--ink:#141a24;--muted:#5b6678;--line:#dbe1ea;--accent:#2450e6;--accent-ink:#fff}
+[data-theme="dark"]{--bg:#111827;--surface:#18212f;--ink:#e8edf6;--muted:#9aa6bb;--line:#2a3649;--accent:#8fabff;--accent-ink:#0f1730}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6;transition:background .25s,color .25s}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.layout{display:grid;grid-template-columns:320px 1fr;gap:64px;max-width:1180px;margin:0 auto;padding:0 32px}
+aside{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding:64px 0}
+h1{font-size:2.6rem;line-height:1.05;margin:0 0 8px;font-weight:700;letter-spacing:-.02em}
+.role{color:var(--accent);font-weight:500;margin:0 0 20px}
+.bio{color:var(--muted);max-width:34ch;margin:0 0 28px}
+.links{display:flex;flex-direction:column;gap:6px;padding:0;margin:0;list-style:none}
+.links a{text-decoration:none;border-bottom:1px solid var(--line);display:inline-block;padding:2px 0}
+.links a:hover{border-color:var(--accent)}
+.theme{align-self:flex-start;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font:inherit;cursor:pointer}
+.theme:hover{border-color:var(--accent)}
+main{padding:64px 0}
+.project{padding:0 0 72px;margin:0 0 72px;border-bottom:1px solid var(--line)}
+.project:last-child{border:0}
+.viewer{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;aspect-ratio:16/10}
+.viewer img,.viewer video,.viewer iframe{width:100%;height:100%;object-fit:contain;border:0;display:block;background:#000}
+.viewer img{background:var(--surface)}
+.thumbs{display:flex;gap:8px;margin:10px 0 0;flex-wrap:wrap}
+.thumbs button{width:84px;height:54px;padding:0;border:2px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface);cursor:pointer;position:relative}
+.thumbs button[aria-pressed="true"]{border-color:var(--accent)}
+.thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+.thumbs .vid{display:grid;place-items:center;height:100%;font-size:.8rem;color:var(--ink)}
+h2{font-size:1.9rem;margin:28px 0 8px;letter-spacing:-.01em}
+.desc{color:var(--muted);max-width:62ch;margin:0 0 16px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0 0 20px;list-style:none}
+.tags li{font-size:.85rem;border:1px solid var(--line);border-radius:6px;padding:2px 10px;background:var(--surface)}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{text-decoration:none;padding:10px 18px;border-radius:8px;font-weight:500;border:1px solid var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--accent)}
+@media(max-width:860px){
+  .layout{grid-template-columns:1fr;gap:0;padding:0 20px}
+  aside{position:static;height:auto;padding:40px 0 8px;gap:24px}
+  main{padding:32px 0}
+  h1{font-size:2.1rem}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body >
+
+<div class="layout">
+
+  <aside>
+    <div>
+      <h1 id="name"></h1>
+      <p class="role" id="role"></p>
+      <p class="bio" id="bio"></p>
+      <ul class="links" id="links"></ul>
+
+    </div>
+    <button class="theme" id="theme" type="button"></button>
+
+  </aside>
+  <main id="projects" aria-label="Projects"></main>
+</div>
+
+<script>
+
+const $ = (s) => document.querySelector(s);
+const el = (tag, props = {}, ...kids) => {
+  const n = Object.assign(document.createElement(tag), props);
+  kids.forEach(k => n.append(k));
+  return n;
+};
+
+// ---- Theme toggle ----
+const themeBtn = $("#theme");
+function paintTheme() {
+  const dark = document.documentElement.dataset.theme === "dark";
+  themeBtn.textContent = dark ? "Light mode" : "Dark mode";
+}
+themeBtn.addEventListener("click", () => {
+  const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  document.documentElement.dataset.theme = next;
+  try { localStorage.setItem("theme", next); } catch (e) {}
+  paintTheme();
+});
+paintTheme();
+
+// ---- Media helpers ----
+function youtubeEmbed(url) {
+  const m = url.match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/);
+  return m ? `https://www.youtube-nocookie.com/embed/${m[1]}` : null;
+}
+function showMedia(viewer, item) {
+  viewer.replaceChildren();
+  if (item.type === "image") {
+    viewer.append(el("img", { src: item.src, alt: item.alt, loading: "lazy" }));
+  } else {
+    const yt = youtubeEmbed(item.src);
+    viewer.append(yt
+      ? el("iframe", { src: yt, title: item.alt, allowfullscreen: true })
+      : el("video", { src: item.src, controls: true, preload: "metadata" }));
+  }
+}
+
+// ---- Render ----
+function renderProject(p) {
+  const media = [];
+  if (p.video) media.push({ type: "video", src: p.video, alt: p.title + " video" });
+  (p.images || []).forEach((src, i) => media.push({ type: "image", src, alt: `${p.title} screenshot ${i + 1}` }));
+
+  const viewer = el("div", { className: "viewer" });
+  const thumbs = el("div", { className: "thumbs" });
+  media.forEach((m, i) => {
+    const b = el("button", { type: "button", ariaLabel: m.alt });
+    b.setAttribute("aria-pressed", i === 0 ? "true" : "false");
+    b.append(m.type === "image" ? el("img", { src: m.src, alt: "" }) : el("span", { className: "vid" }, "Video"));
+    b.addEventListener("click", () => {
+      thumbs.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", "false"));
+      b.setAttribute("aria-pressed", "true");
+      showMedia(viewer, m);
+    });
+    thumbs.append(b);
+  });
+  if (media.length) showMedia(viewer, media[0]);
+
+  const btns = el("div", { className: "btns" });
+  if (p.github) btns.append(el("a", { className: "btn primary", href: p.github, target: "_blank", rel: "noopener" }, "View code on GitHub"));
+  if (p.demo) btns.append(el("a", { className: "btn ghost", href: p.demo, target: "_blank", rel: "noopener" }, "Live demo"));
+
+  return el("article", { className: "project" },
+    media.length ? viewer : "",
+    media.length > 1 ? thumbs : "",
+    el("h2", {}, p.title),
+    el("p", { className: "desc" }, p.description),
+    el("ul", { className: "tags" }, ...(p.tags || []).map(t => el("li", {}, t))),
+    btns
+  );
+}
+
+fetch("projects.json")
+  .then(r => r.json())
+  .then(({ profile, projects }) => {
+    document.title = `${profile.name} – ${profile.title}`;
+    $("#name").textContent = profile.name;
+    $("#role").textContent = profile.title;
+    $("#bio").textContent = profile.bio;
+    $("#links").append(...profile.links.map(l =>
+      el("li", {}, el("a", { href: l.url, target: "_blank", rel: "noopener" }, l.label))));
+    $("#projects").append(...projects.map(renderProject));
+  })
+  .catch(() => {
+    $("#projects").append(el("p", {}, "Could not load projects.json. Run the site with Docker (see README)."));
+  });
+</script>
+</body>
+</html>
